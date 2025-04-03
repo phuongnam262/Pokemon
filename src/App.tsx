@@ -135,7 +135,7 @@ const App: React.FC = () => {
         {!viewDetail.isOpened && (nextUrl || filteredPokemons.length > 0) && (
           <div className="btn">
             <button onClick={loadmore} disabled={loading}>
-              {loading ? "Loading..." : "Load more"}
+              {loading ? "LOADDING..." : "LOAD MORE"}
             </button>
           </div>
         )}
