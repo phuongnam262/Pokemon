@@ -40,6 +40,10 @@ const PokemonCollection: React.FC<Props> = (props) => {
                                 abilities={pokemon.abilities}
                                 image={pokemon.sprites.front_default}
                                 types={pokemon.types}
+                                stats={pokemon.stats}
+                                height={pokemon.height}
+                                weight={pokemon.weight}
+                                base_experience={pokemon.base_experience}
                             />
                         </div>
                     )

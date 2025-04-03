@@ -11,6 +11,15 @@ export interface Pokemon{
       url: string;
     }
   }[];
+  stats: {
+    base_stat: number;
+    stat: {
+      name: string;
+    }
+  }[];
+  height: number;
+  weight: number;
+  base_experience: number;
 }
 
 export interface Detail{

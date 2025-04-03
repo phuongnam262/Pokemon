@@ -20,10 +20,19 @@ interface Props {
             url: string;
         }
     }[];
+    stats: {
+        base_stat: number;
+        stat: {
+            name: string;
+        }
+    }[];
+    height: number;
+    weight: number;
+    base_experience: number;
 }
 
 const PokemonList: React.FC<Props> = (props) => {
-    const { name, id, image, abilities, types, viewDetail, setDetail } = props;
+    const { name, id, image, abilities, types, stats, height, weight, base_experience, viewDetail, setDetail } = props;
     const [isSelected, setSelected] = useState(false)
     useEffect(() => {
         setSelected(id === viewDetail?.id)
@@ -60,6 +69,12 @@ const PokemonList: React.FC<Props> = (props) => {
         return typeColors[type] || '#888888';
     }
 
+    const formatStatName = (name: string): string => {
+        return name.split('-').map(word => 
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+    }
+
     return (
         <div className="">
             {isSelected ? (
@@ -88,6 +103,40 @@ const PokemonList: React.FC<Props> = (props) => {
                                         {type.type.name}
                                     </span>
                                 ))}
+                            </div>
+                        </div>
+                        <div className="detail-stats">
+                            <h3>Base Stats</h3>
+                            <div className="stats-container">
+                                {stats.map((stat) => (
+                                    <div key={stat.stat.name} className="stat-item">
+                                        <span className="stat-name">{formatStatName(stat.stat.name)}</span>
+                                        <div className="stat-bar-container">
+                                            <div 
+                                                className="stat-bar"
+                                                style={{
+                                                    width: `${(stat.base_stat / 255) * 100}%`,
+                                                    backgroundColor: stat.base_stat > 100 ? '#4CAF50' : '#FFA726'
+                                                }}
+                                            ></div>
+                                        </div>
+                                        <span className="stat-value">{stat.base_stat}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="detail-info-grid">
+                            <div className="info-item">
+                                <span className="info-label">Height</span>
+                                <span className="info-value">{height/10}m</span>
+                            </div>
+                            <div className="info-item">
+                                <span className="info-label">Weight</span>
+                                <span className="info-value">{weight/10}kg</span>
+                            </div>
+                            <div className="info-item">
+                                <span className="info-label">Base Experience</span>
+                                <span className="info-value">{base_experience}</span>
                             </div>
                         </div>
                         <div className="detail-skill">
