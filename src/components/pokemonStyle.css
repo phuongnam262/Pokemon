@@ -22,7 +22,8 @@
     height: 100vh;
 }
 .detail-container {
-    height: 100%;
+    height: auto;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -82,12 +83,17 @@
 .pokemon-list-detailed {
     background-color: #f4f1de;
     position: absolute;
-    text-align:center;
-    width: 400px;
-    height: 700px;
-    top:30%;
-    left:41%;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     border-radius: 12px;
+    overflow-y: auto;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .btn {
